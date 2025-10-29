@@ -1,13 +1,7 @@
-data class Exhibition(
-    val title: String,
-    val description: String,
-    val startDate: String,
-    val endDate: String,
-    val curator: String,
-    val artifacts: List<MuseumArtifact>,
-    val isVirtual: Boolean,
-    val maxVisitors: Int?
-)
+package domain.builder
+
+import domain.models.Exhibition
+import domain.models.MuseumArtifact
 
 class ExhibitionBuilder {
     private var title: String = ""

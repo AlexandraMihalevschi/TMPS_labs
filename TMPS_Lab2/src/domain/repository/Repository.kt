@@ -1,3 +1,7 @@
+package domain.repository
+
+import domain.models.MuseumArtifact
+
 object MuseumRegistry {
     private val artifacts = mutableListOf<MuseumArtifact>()
 
@@ -13,4 +17,6 @@ object MuseumRegistry {
     }
 
     fun findById(id: String): MuseumArtifact? = artifacts.find { it.id == id }
+
+    fun getAllArtifacts(): List<MuseumArtifact> = artifacts.toList()
 }

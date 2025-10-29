@@ -1,39 +1,7 @@
-abstract class MuseumArtifact(
-    val id: String,
-    val name: String,
-    val category: String,
-    val origin: String,
-    val yearAcquired: Int
-)
+package domain.factory
 
-class Painting(
-    id: String,
-    name: String,
-    origin: String,
-    yearAcquired: Int,
-    val artist: String,
-    val medium: String
-) : MuseumArtifact(id, name, "Painting", origin, yearAcquired)
+import domain.models.*
 
-class Sculpture(
-    id: String,
-    name: String,
-    origin: String,
-    yearAcquired: Int,
-    val material: String,
-    val height: Double
-) : MuseumArtifact(id, name, "Sculpture", origin, yearAcquired)
-
-class Artifact(
-    id: String,
-    name: String,
-    origin: String,
-    yearAcquired: Int,
-    val period: String,
-    val condition: String
-) : MuseumArtifact(id, name, "Historical Artifact", origin, yearAcquired)
-
-// Factory for creating different types of artifacts
 abstract class ArtifactFactory {
     abstract fun createArtifact(
         id: String,
