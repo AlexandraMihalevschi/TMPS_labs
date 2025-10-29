@@ -1,14 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    println("🏛️  Museum Registry System Demo\n")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    val reader = InputReader()
+
+    while (true) {
+        println("==== Menu ====")
+        println("1. List all artifacts")
+        println("2. Add a new artifact")
+        println("3. Create an exhibition")
+        println("4. Exit")
+        print("Choose an option (1-4): ")
+
+        val input = readLine()?.trim() ?: ""
+
+        val command: MenuCommand? = when (input) {
+            "1" -> ListArtifactsCommand()
+            "2" -> AddArtifactCommand(reader)
+            "3" -> CreateExhibitionCommand(reader)
+            "4" -> {
+                if (reader.readConfirmation("Are you sure you want to exit?")) {
+                    println("👋 Exiting. Goodbye!")
+                    return
+                }
+                null
+            }
+            else -> {
+                println("❌ Invalid option, try again.")
+                null
+            }
+        }
+
+        command?.execute()
+        println()
     }
 }
